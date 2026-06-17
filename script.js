@@ -1,0 +1,1 @@
+document.querySelectorAll('form').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('toast');if(t){t.style.display='block';setTimeout(()=>t.style.display='none',3000);}f.reset();}));
