@@ -22,6 +22,23 @@ export default async function handler(req, res) {
 
   try {
     const sql = neon(process.env.DATABASE_URL);
+
+    await sql`
+      CREATE TABLE IF NOT EXISTS beta_signups (
+        id BIGSERIAL PRIMARY KEY,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        signup_type TEXT NOT NULL,
+        organization TEXT,
+        city TEXT,
+        message TEXT,
+        consent BOOLEAN NOT NULL DEFAULT TRUE,
+        source TEXT NOT NULL DEFAULT 'website',
+        created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        UNIQUE (email, signup_type)
+      )
+    `;
+
     const rows = await sql`
       SELECT id, name, email, signup_type, organization, city, message, consent, source, created_at
       FROM beta_signups
@@ -38,6 +55,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ totals, signups: rows });
   } catch (error) {
     console.error('admin-signups error', error);
-    return res.status(500).json({ error: 'Unable to load signups' });
+    return res.status(500).json({ error: 'Unable to load signups', detail: error?.message || 'Unknown database error' });
   }
 }
