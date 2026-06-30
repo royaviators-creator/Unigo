@@ -44,13 +44,13 @@
     const scores = [15, 10, 15, 10, 10];
     const total = scores.reduce((sum, score) => sum + score, 0);
 
-    const creditChip = passportPreview.querySelector('.credit-chip');
+    const chip = passportPreview.querySelector('.credit-chip');
     const ringValue = passportPreview.querySelector('.impact-ring strong');
     const ringLabel = passportPreview.querySelector('.impact-ring span');
 
-    if (creditChip) creditChip.textContent = `${total} IC`;
+    if (chip) chip.textContent = 'Impact Passport';
     if (ringValue) ringValue.textContent = total;
-    if (ringLabel) ringLabel.textContent = 'Impact Credits';
+    if (ringLabel) ringLabel.textContent = 'Impact Score';
 
     passportPreview.querySelectorAll('.metric-grid > div strong').forEach((item, index) => {
       item.textContent = scores[index] ?? 0;
@@ -66,37 +66,57 @@
         '🤝 Community Builder'
       ].map(label => `<span>${label}</span>`).join('');
     }
+
+    const heroText = passportPreview.querySelector('.phone-hero p');
+    if (heroText) heroText.textContent = 'Verified actions build your score, badges and traveler level.';
   }
 
   const page = window.location.pathname.split('/').pop() || 'index.html';
 
   if (page === 'impact-passport.html') {
+    const intro = document.querySelector('.page-hero .hero-text');
+    if (intro) intro.textContent = 'A personal record of verified travel actions, five impact dimensions, badges and traveler levels.';
+
+    const demoScore = document.querySelector('.passport-score');
+    if (demoScore) demoScore.textContent = '60 Impact Score';
+
+    const demoScoreNote = demoScore?.nextElementSibling;
+    if (demoScoreNote) demoScoreNote.textContent = 'Illustrative traveler progress';
+
+    document.querySelectorAll('.action-card strong').forEach((item, index) => {
+      const labels = ['CRS +15', 'LGBTQIS +15', 'GES +10 · LES +10', 'CIS +10'];
+      item.textContent = labels[index] || 'Verified contribution';
+    });
+
+    const historyHeading = [...document.querySelectorAll('h2')].find(h => h.textContent.includes('How the 60 Impact Credits are earned'));
+    if (historyHeading) historyHeading.textContent = 'How the demo Impact Score is built.';
+
     const rewardHeading = [...document.querySelectorAll('h2')].find(h => h.textContent.includes('Impact Credits follow verified effort'));
     const rewardSection = rewardHeading?.closest('section');
     if (rewardSection) {
       rewardSection.innerHTML = `
-        <p class="eyebrow">Two separate systems</p>
-        <h2>Build impact. Earn rewards.</h2>
+        <p class="eyebrow">One simple traveler system</p>
+        <h2>Your Passport unlocks business offers.</h2>
         <div class="tier-grid">
           <article class="tier-card">
             <h3>Impact Score</h3>
-            <p><strong>Non-spendable</strong></p>
-            <p>Your long-term record across CRS, GES, LGBTQIS, LES and CIS. It grows through verified actions and is never reduced when rewards are redeemed.</p>
+            <p><strong>Progress</strong></p>
+            <p>Your score grows across CRS, GES, LGBTQIS, LES and CIS through verified actions.</p>
           </article>
           <article class="tier-card">
-            <h3>Impact Credits (IC)</h3>
-            <p><strong>Spendable rewards</strong></p>
-            <p>Credits are earned from verified actions and can be redeemed for offers created and funded by participating businesses.</p>
-          </article>
-          <article class="tier-card">
-            <h3>Badges & Levels</h3>
+            <h3>Badges</h3>
             <p><strong>Recognition</strong></p>
-            <p>Badges and levels reflect milestones in the Passport. They are not spent and remain part of the traveler's impact identity.</p>
+            <p>Badges show meaningful milestones such as Circular Explorer, Pride Ally or Community Builder.</p>
+          </article>
+          <article class="tier-card">
+            <h3>Traveler Level</h3>
+            <p><strong>Access</strong></p>
+            <p>Your overall level can qualify you for offers created directly by participating businesses.</p>
           </article>
         </div>
         <div class="demo-note">
           <strong>Example</strong>
-          <p>A traveler joins a verified cleanup: their Carbon and Community scores increase, they earn Impact Credits, and they may unlock a badge. Redeeming those credits later does not reduce their Impact Score.</p>
+          <p>A café may offer a free drink to travelers with the Community Builder badge. A tour provider may offer early access to Impact Advocates. UNIGO only verifies eligibility and displays the offer.</p>
         </div>`;
     }
 
@@ -105,13 +125,13 @@
       const offerBlock = document.createElement('section');
       offerBlock.className = 'section compact';
       offerBlock.innerHTML = `
-        <p class="eyebrow">Reward marketplace</p>
-        <h2>Businesses fund offers, not the credits themselves.</h2>
+        <p class="eyebrow">Business offers</p>
+        <h2>No points, wallets or redemption currency.</h2>
         <div class="rules">
-          <article><h3>Business-created offers</h3><p>Partners choose the reward, required IC, quantity, validity period and redemption conditions.</p></article>
-          <article><h3>No fixed euro exchange</h3><p>Impact Credits are not cash and do not have a guaranteed euro value. Each offer has its own value and credit requirement.</p></article>
-          <article><h3>UNIGO evaluation</h3><p>UNIGO reviews fairness, clarity, availability, customer value and whether the offer supports responsible participation.</p></article>
-          <article><h3>Data improves pricing</h3><p>Redemption rate, repeat visits, unused capacity and customer feedback help UNIGO recommend better IC ranges over time.</p></article>
+          <article><h3>Business-controlled</h3><p>Each business chooses the offer, eligibility rule, quantity, expiry and conditions.</p></article>
+          <article><h3>Passport-based access</h3><p>Eligibility can be based on a badge, traveler level or relevant verified action.</p></article>
+          <article><h3>Simple confirmation</h3><p>The traveler shows or shares their Passport status. The business confirms and provides the offer directly.</p></article>
+          <article><h3>UNIGO stays neutral</h3><p>UNIGO does not issue money, fund discounts or manage a reward balance.</p></article>
         </div>`;
       safeguards.parentNode.insertBefore(offerBlock, safeguards);
     }
@@ -122,14 +142,14 @@
     const travelerSection = travelerHeading?.closest('section');
     if (travelerSection) {
       travelerSection.innerHTML = `
-        <p class="eyebrow">Three distinct systems</p>
-        <h2>Scoring, rewards and offers stay separate.</h2>
+        <p class="eyebrow">Two clear scoring systems</p>
+        <h2>Traveler progress and business assessment stay separate.</h2>
         <div class="framework-grid">
-          <article class="framework-card"><h3>Traveler Impact Score</h3><p>Non-spendable progress across CRS, GES, LGBTQIS, LES and CIS.</p><small>Represents verified contribution and remains in the Impact Passport.</small></article>
-          <article class="framework-card"><h3>Impact Credits (IC)</h3><p>Spendable reward currency earned from verified actions.</p><small>Redeemed for business offers without reducing the traveler's Impact Score.</small></article>
-          <article class="framework-card"><h3>Business Impact Score (BIS)</h3><p>Evidence-based assessment of business practices.</p><small>Separate from customer rewards and offer pricing.</small></article>
+          <article class="framework-card"><h3>Traveler Impact Score</h3><p>Progress across CRS, GES, LGBTQIS, LES and CIS.</p><small>Builds the traveler's Passport, level and badges.</small></article>
+          <article class="framework-card"><h3>Business Impact Score (BIS)</h3><p>Evidence-based assessment of business practices.</p><small>Measures the business, not its offers.</small></article>
+          <article class="framework-card"><h3>Business Offers</h3><p>Optional benefits created directly by businesses.</p><small>Unlocked by Passport badges, levels or verified actions—without credits or currency.</small></article>
         </div>
-        <div class="evidence-box"><strong>Offer evaluation</strong><p>Businesses set the reward, IC requirement, quantity and expiry. UNIGO checks customer value, clarity, fairness, responsible fit and redemption performance. Impact Credits are not cash and have no fixed euro exchange rate.</p></div>
+        <div class="evidence-box"><strong>Offer evaluation</strong><p>Businesses control the offer. UNIGO checks clarity, fairness, availability, suitability and whether the eligibility rule can be verified through the Impact Passport.</p></div>
         <div class="hero-actions"><a class="btn primary" href="impact-passport.html">Explore the Passport</a><a class="btn secondary" href="apply.html">Create a Partner Offer</a></div>`;
     }
   }
@@ -142,15 +162,15 @@
       offers.id = 'partner-offers';
       offers.innerHTML = `
         <p class="eyebrow">Partner offers</p>
-        <h2>Turn responsible actions into customer rewards.</h2>
-        <p class="hero-text">Participating businesses can create limited offers that travelers redeem with Impact Credits.</p>
+        <h2>Businesses reward the travelers they want to welcome.</h2>
+        <p class="hero-text">Offers are created and provided directly by each business. UNIGO simply connects the offer to clear Impact Passport criteria.</p>
         <div class="method-grid">
-          <span><strong>1. Choose the offer</strong><br>Discount, upgrade, free item, event access or community experience.</span>
-          <span><strong>2. Set the terms</strong><br>Required IC, quantity, expiry and any booking conditions.</span>
-          <span><strong>3. UNIGO reviews it</strong><br>Fairness, clarity, value, availability and alignment with responsible travel.</span>
-          <span><strong>4. Measure performance</strong><br>Redemptions, repeat visits, customer feedback and unused capacity.</span>
+          <span><strong>1. Choose the offer</strong><br>Discount, upgrade, free item, event access or special experience.</span>
+          <span><strong>2. Choose eligibility</strong><br>A badge, traveler level or relevant verified action.</span>
+          <span><strong>3. Set the limits</strong><br>Quantity, expiry, booking conditions and availability.</span>
+          <span><strong>4. Confirm directly</strong><br>The traveler presents their Passport status and the business provides the offer.</span>
         </div>
-        <div class="pilot-note"><strong>Who pays?</strong><p>The business provides the redeemed reward as part of its customer acquisition or loyalty budget. UNIGO issues and records Impact Credits; credits are not cash and are not purchased by travelers.</p></div>
+        <div class="pilot-note"><strong>UNIGO's role</strong><p>UNIGO displays the offer, verifies the Passport condition and tracks basic performance. It does not fund rewards, issue credits or manage a wallet.</p></div>
         <a class="btn primary" href="apply.html">Apply as a Partner</a>`;
       main.appendChild(offers);
     }
