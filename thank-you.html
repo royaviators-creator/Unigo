@@ -1,1 +1,85 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thank You | UNIGO</title><meta name="description" content="Thank you for joining the UNIGO beta."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head><body><main><section class="section page-hero" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"><p class="eyebrow">Welcome to the movement</p><h1>Thank You</h1><p class="hero-text" style="max-width:700px">Your interest has been recorded. You are now part of the early UNIGO community helping shape a new approach to impact travel.</p><div class="cards three" style="max-width:1000px;margin-top:30px"><article><h3>Explore Businesses</h3><p>Discover the first impact businesses in Utrecht, Amsterdam and Rotterdam.</p></article><article><h3>See the Passport</h3><p>Explore the demo Impact Passport and traveler impact model.</p></article><article><h3>Follow the Journey</h3><p>Receive future updates about the beta, scoring framework and new experiences.</p></article></div><div class="hero-actions" style="margin-top:30px"><a class="btn primary" href="businesses.html">Explore Businesses</a><a class="btn secondary" href="index.html">Back to Home</a></div><p style="margin-top:40px;color:#9ca3af">Bringing Cultures Together · Travel Light. Impact Big.</p></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Thank You | UNIGO</title>
+  <meta name="description" content="Thank you for joining the UNIGO community.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; overflow-x: hidden; }
+    .thank-you-page {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(24px, 6vw, 72px) max(20px, env(safe-area-inset-left));
+      text-align: center;
+    }
+    .thank-you-inner { width: min(100%, 1080px); margin: 0 auto; }
+    .thank-you-page h1 { margin: 8px 0 16px; font-size: clamp(2.5rem, 9vw, 5.5rem); line-height: .95; }
+    .thank-you-copy { width: min(100%, 700px); margin: 0 auto; }
+    .thank-you-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      width: 100%;
+      margin: 32px auto 0;
+    }
+    .thank-you-grid article { min-width: 0; }
+    .thank-you-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .thank-you-actions .btn { min-width: 190px; }
+    .thank-you-tagline { margin: 36px 0 0; color: #9ca3af; font-size: .95rem; }
+    @media (max-width: 760px) {
+      .thank-you-page { align-items: flex-start; padding-top: 56px; padding-bottom: 40px; }
+      .thank-you-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 24px; }
+      .thank-you-actions { flex-direction: column; width: 100%; margin-top: 24px; }
+      .thank-you-actions .btn { width: 100%; min-width: 0; }
+      .thank-you-tagline { margin-top: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="thank-you-page">
+      <div class="thank-you-inner">
+        <p class="eyebrow">Welcome to the movement</p>
+        <h1>Thank You</h1>
+        <p class="hero-text thank-you-copy">Your interest has been recorded. You are now part of the early UNIGO community helping shape a new approach to impact travel.</p>
+
+        <div class="cards thank-you-grid">
+          <article>
+            <h3>Explore Businesses</h3>
+            <p>Discover the first impact businesses in Utrecht, Amsterdam, and Rotterdam.</p>
+          </article>
+          <article>
+            <h3>See the Passport</h3>
+            <p>Explore the demo Impact Passport and traveler impact model.</p>
+          </article>
+          <article>
+            <h3>Follow the Journey</h3>
+            <p>Receive future updates about the platform, scoring framework, and new experiences.</p>
+          </article>
+        </div>
+
+        <div class="thank-you-actions">
+          <a class="btn primary" href="businesses.html">Explore Businesses</a>
+          <a class="btn secondary" href="index.html">Back to Home</a>
+        </div>
+
+        <p class="thank-you-tagline">Bringing Cultures Together · Travel Light. Impact Big.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
