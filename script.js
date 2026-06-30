@@ -38,6 +38,11 @@
 
   const page=window.location.pathname.split('/').pop()||'index.html';
 
+  if(page==='index.html'){
+    const launchLabel=document.querySelector('.premium-hero .hero-copy > .eyebrow');
+    if(launchLabel)launchLabel.innerHTML='<span class="live-dot"></span> Netherlands early-access';
+  }
+
   if(page==='businesses.html'){
     document.title='UNIGO Impact Directory';
     const description=document.querySelector('meta[name="description"]');
