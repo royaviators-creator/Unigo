@@ -4,76 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Thank You | UNIGO</title>
-  <meta name="description" content="Thank you for joining the UNIGO community.">
+  <meta name="description" content="Thank you for joining or applying to UNIGO.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    * { box-sizing: border-box; }
-    html, body { margin: 0; width: 100%; overflow-x: hidden; }
-    .thank-you-page {
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(24px, 6vw, 72px) max(20px, env(safe-area-inset-left));
-      text-align: center;
-    }
-    .thank-you-inner { width: min(100%, 1080px); margin: 0 auto; }
-    .thank-you-page h1 { margin: 8px 0 16px; font-size: clamp(2.5rem, 9vw, 5.5rem); line-height: .95; }
-    .thank-you-copy { width: min(100%, 700px); margin: 0 auto; }
-    .thank-you-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      width: 100%;
-      margin: 32px auto 0;
-    }
-    .thank-you-grid article { min-width: 0; }
-    .thank-you-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-    .thank-you-actions .btn { min-width: 190px; }
-    .thank-you-tagline { margin: 36px 0 0; color: #9ca3af; font-size: .95rem; }
-    @media (max-width: 760px) {
-      .thank-you-page { align-items: flex-start; padding-top: 56px; padding-bottom: 40px; }
-      .thank-you-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 24px; }
-      .thank-you-actions { flex-direction: column; width: 100%; margin-top: 24px; }
-      .thank-you-actions .btn { width: 100%; min-width: 0; }
-      .thank-you-tagline { margin-top: 28px; }
-    }
+    *{box-sizing:border-box}html,body{margin:0;width:100%;overflow-x:hidden}.thank-you-page{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:clamp(24px,6vw,72px) max(20px,env(safe-area-inset-left));text-align:center}.thank-you-inner{width:min(100%,1080px);margin:0 auto}.thank-you-page h1{margin:8px 0 16px;font-size:clamp(2.5rem,9vw,5.5rem);line-height:.95}.thank-you-copy{width:min(100%,700px);margin:0 auto}.thank-you-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%;margin:32px auto 0}.thank-you-grid article{min-width:0}.thank-you-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}.thank-you-actions .btn{min-width:190px}.thank-you-tagline{margin:36px 0 0;color:#9ca3af;font-size:.95rem}@media(max-width:760px){.thank-you-page{align-items:flex-start;padding-top:56px;padding-bottom:40px}.thank-you-grid{grid-template-columns:1fr;gap:14px;margin-top:24px}.thank-you-actions{flex-direction:column;width:100%;margin-top:24px}.thank-you-actions .btn{width:100%;min-width:0}.thank-you-tagline{margin-top:28px}}
   </style>
 </head>
 <body>
   <main>
     <section class="thank-you-page">
       <div class="thank-you-inner">
-        <p class="eyebrow">Welcome to the movement</p>
-        <h1>Thank You</h1>
-        <p class="hero-text thank-you-copy">Your interest has been recorded. You are now part of the early UNIGO community helping shape a new approach to impact travel.</p>
+        <p class="eyebrow" id="confirmation-eyebrow">Welcome to UNIGO</p>
+        <h1 id="confirmation-title">Thank You</h1>
+        <p class="hero-text thank-you-copy" id="confirmation-copy">Your request has been received. We will contact you with the next relevant step.</p>
 
-        <div class="cards thank-you-grid">
-          <article>
-            <h3>Explore Businesses</h3>
-            <p>Discover the first impact businesses in Utrecht, Amsterdam, and Rotterdam.</p>
-          </article>
-          <article>
-            <h3>See the Passport</h3>
-            <p>Explore the demo Impact Passport and traveler impact model.</p>
-          </article>
-          <article>
-            <h3>Follow the Journey</h3>
-            <p>Receive future updates about the platform, scoring framework, and new experiences.</p>
-          </article>
+        <div class="cards thank-you-grid" id="confirmation-cards">
+          <article><h3>Explore Businesses</h3><p>Discover responsible businesses and community organizations in Utrecht, Amsterdam, and Rotterdam.</p></article>
+          <article><h3>Explore the Passport</h3><p>See how the illustrative Impact Passport is designed to represent verified travel actions.</p></article>
+          <article><h3>Stay Connected</h3><p>Receive relevant updates about the platform, scoring framework, and new experiences.</p></article>
         </div>
 
         <div class="thank-you-actions">
-          <a class="btn primary" href="businesses.html">Explore Businesses</a>
+          <a class="btn primary" id="primary-action" href="businesses.html">Explore Businesses</a>
           <a class="btn secondary" href="index.html">Back to Home</a>
         </div>
 
@@ -81,5 +36,19 @@
       </div>
     </section>
   </main>
+  <script>
+    const type=sessionStorage.getItem('unigo_submission_type');
+    if(type==='partner'){
+      document.getElementById('confirmation-eyebrow').textContent='Application received';
+      document.getElementById('confirmation-title').textContent='Thank You';
+      document.getElementById('confirmation-copy').textContent='Your application has been received. UNIGO will review your organization, public evidence, and the most suitable next step.';
+      document.getElementById('confirmation-cards').innerHTML='<article><h3>Application Review</h3><p>We will review your organization type, location, activities, and public impact information.</p></article><article><h3>Profile Discussion</h3><p>Suitable applicants may be contacted to clarify evidence and discuss a future UNIGO profile.</p></article><article><h3>No Partnership Implied Yet</h3><p>Submitting an application does not create a partnership or verified score until review is complete.</p></article>';
+      const action=document.getElementById('primary-action');action.href='impact-scoring.html';action.textContent='Review the Scoring Framework';
+    }else{
+      document.getElementById('confirmation-eyebrow').textContent='Welcome to the founding community';
+      document.getElementById('confirmation-copy').textContent='Your details have been received. You are now part of the UNIGO launch community and will receive relevant platform updates.';
+    }
+    sessionStorage.removeItem('unigo_submission_type');
+  </script>
 </body>
 </html>
