@@ -123,7 +123,7 @@
       const code = orderedDimensions[index];
       const dimension = dimensions[code];
       if (!dimension) return;
-      card.innerHTML = `<small>${code}</small><strong>${scores[index] ?? 0}</strong><span>${dimension.label}</span>`;
+      card.innerHTML = `<small>${code}</small><strong>${scores[index] ?? 0}</strong>`;
       applyDimension(card, code);
     });
 
