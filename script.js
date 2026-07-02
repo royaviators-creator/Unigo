@@ -18,11 +18,11 @@
     { href: 'businesses.html', label: 'Explore UNIGO initial partners' }
   ];
   const dimensions = {
-    CRS: { icon: 'LEAF', label: 'Carbon Reduction' },
-    GES: { icon: 'EQ', label: 'Gender Equality' },
-    LGBTQIS: { icon: 'PRIDE', label: 'LGBTQ+ Inclusion' },
-    LES: { icon: 'LOCAL', label: 'Local Economy' },
-    CIS: { icon: 'CIVIC', label: 'Community Impact' }
+    CRS: { icon: '🌿', label: 'Carbon Reduction' },
+    GES: { icon: '⚖️', label: 'Gender Equality' },
+    LGBTQIS: { icon: '🌈', label: 'LGBTQ+ Inclusion' },
+    LES: { icon: '💚', label: 'Local Economy' },
+    CIS: { icon: '🤝', label: 'Community Impact' }
   };
   const orderedDimensions = Object.keys(dimensions);
   const applyDimension = (el, code) => {
@@ -83,6 +83,8 @@
   document.querySelectorAll('.dimension-grid .dimension').forEach(card => {
     const code = card.querySelector('small')?.textContent.trim();
     applyDimension(card, code);
+    const description = card.querySelector('p');
+    if (description && dimensions[code]) description.textContent = dimensions[code].label;
   });
   document.querySelectorAll('.metric-grid > div').forEach(card => {
     if (card.closest('.passport-preview')) return;
@@ -117,11 +119,12 @@
     if (ringValue) ringValue.textContent = total;
     if (ringLabel) ringLabel.textContent = 'Impact Score';
 
-    passportPreview.querySelectorAll('.metric-grid > div strong').forEach((item, index) => {
-      item.textContent = scores[index] ?? 0;
-    });
-    passportPreview.querySelectorAll('.metric-grid > div small').forEach((item, index) => {
-      item.textContent = badgeLabels[index] || '';
+    passportPreview.querySelectorAll('.metric-grid > div').forEach((card, index) => {
+      const code = orderedDimensions[index];
+      const dimension = dimensions[code];
+      if (!dimension) return;
+      card.innerHTML = `<small>${code}</small><strong>${scores[index] ?? 0}</strong><span>${dimension.label}</span>`;
+      applyDimension(card, code);
     });
 
     const badges = passportPreview.querySelector('.badges');
