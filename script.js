@@ -8,7 +8,6 @@
 })();
 
 (async () => {
-  const { livingPlatformMetrics } = await import('./platform-state.js');
   await import('./analytics.js');
   await import('./base-script.js');
   await import('./journeys.js');
@@ -72,30 +71,6 @@
       item.style.transform = '';
     });
   });
-  const hero = document.querySelector('.home-page .premium-hero');
-  if (hero && !document.querySelector('.living-platform')) {
-    const section = document.createElement('section');
-    section.className = 'living-platform';
-    section.setAttribute('aria-labelledby', 'living-platform-title');
-    section.innerHTML = `
-      <div class="living-platform-inner">
-        <div>
-          <p class="eyebrow">Living platform</p>
-          <h2 id="living-platform-title">UNIGO at launch</h2>
-        </div>
-        <div class="living-metrics">
-          ${livingPlatformMetrics.map(metric => `
-            <article class="living-metric" data-metric="${metric.key}">
-              <span class="living-icon" aria-hidden="true">${metric.icon}</span>
-              <strong>${metric.value}</strong>
-              <small>${metric.label}</small>
-              <p>${metric.detail}</p>
-            </article>
-          `).join('')}
-        </div>
-      </div>`;
-    hero.insertAdjacentElement('afterend', section);
-  }
   document.querySelectorAll('.score-grid article').forEach(article => {
     const code = article.querySelector('span')?.textContent.trim();
     applyDimension(article, code);
@@ -110,6 +85,7 @@
     applyDimension(card, code);
   });
   document.querySelectorAll('.metric-grid > div').forEach(card => {
+    if (card.closest('.passport-preview')) return;
     const code = card.querySelector('small')?.textContent.trim();
     applyDimension(card, code);
   });
@@ -124,6 +100,13 @@
   const passportPreview = document.querySelector('.passport-preview');
   if (passportPreview) {
     const scores = [15, 10, 15, 10, 10];
+    const badgeLabels = [
+      '🌿 Circular Explorer',
+      '⚖️ Equality Supporter',
+      '🌈 Pride Ally',
+      '💚 Local Champion',
+      '🤝 Community Builder'
+    ];
     const total = scores.reduce((sum, score) => sum + score, 0);
 
     const chip = passportPreview.querySelector('.credit-chip');
@@ -137,16 +120,13 @@
     passportPreview.querySelectorAll('.metric-grid > div strong').forEach((item, index) => {
       item.textContent = scores[index] ?? 0;
     });
+    passportPreview.querySelectorAll('.metric-grid > div small').forEach((item, index) => {
+      item.textContent = badgeLabels[index] || '';
+    });
 
     const badges = passportPreview.querySelector('.badges');
     if (badges) {
-      badges.innerHTML = [
-        '🌿 Circular Explorer',
-        '⚖️ Equality Supporter',
-        '🌈 Pride Ally',
-        '💚 Local Champion',
-        '🤝 Community Builder'
-      ].map(label => `<span>${label}</span>`).join('');
+      badges.innerHTML = badgeLabels.map(label => `<span>${label}</span>`).join('');
     }
 
     const heroText = passportPreview.querySelector('.phone-hero p');
