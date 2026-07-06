@@ -156,7 +156,7 @@
     if (demoScoreNote) demoScoreNote.textContent = 'Illustrative traveler progress';
     const passportHead = document.querySelector('.passport-head');
     if (passportHead && !passportHead.querySelector('.traveler-identity')) {
-      passportHead.insertAdjacentHTML('afterbegin', '<div class="traveler-identity"><span class="avatar-placeholder">IE</span><div><small>Traveler identity</small><strong>Impact Explorer</strong><em>Netherlands launch cohort</em></div></div>');
+      passportHead.insertAdjacentHTML('afterbegin', '<div class="traveler-identity"><span class="avatar-placeholder">IE</span><div><small>Traveler identity</small><strong>Impact Explorer</strong><em>Founding Member · Netherlands</em></div></div>');
     }
     const passportDemo = document.querySelector('.passport-demo');
     const badgeRow = passportDemo?.querySelector('.badge-row');
@@ -166,6 +166,26 @@
       badgeSection.innerHTML = '<p class="eyebrow">Recognition</p><h2>Passport badges earned through verified action.</h2>';
       badgeSection.appendChild(badgeRow);
       passportDemo.closest('section').insertAdjacentElement('afterend', badgeSection);
+    }
+
+    if (passportDemo && !document.querySelector('.next-impact-section')) {
+      const nextImpact = document.createElement('section');
+      nextImpact.className = 'section compact next-impact-section';
+      nextImpact.innerHTML = `
+        <div class="next-impact-card impact-dimension" data-dim="LES" data-icon="💚">
+          <div>
+            <p class="eyebrow">Next Impact</p>
+            <h2>Unlock Local Champion.</h2>
+            <p>Visit one verified local business to grow your Passport and move toward the next milestone.</p>
+          </div>
+          <div class="next-impact-meta">
+            <span><strong>+10</strong> Impact Score</span>
+            <span><strong>LES</strong> Local Economy</span>
+            <a class="btn primary" href="businesses.html">Explore Partners</a>
+          </div>
+        </div>`;
+      const target = document.querySelector('.passport-badge-section') || passportDemo.closest('section');
+      target.insertAdjacentElement('afterend', nextImpact);
     }
 
     document.querySelectorAll('.action-card strong').forEach((item, index) => {
