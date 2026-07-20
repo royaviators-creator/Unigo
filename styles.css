@@ -1,2 +1,8 @@
 @import url('base-styles.css');
 @import url('polish.css');
+
+/* Global brand mark override */
+.brand img {
+  content: url('unigo-mark.svg');
+  object-fit: contain;
+}
