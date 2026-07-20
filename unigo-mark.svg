@@ -1,29 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="UNIGO logo mark">
   <defs>
-    <linearGradient id="gold-main" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#fff4c9"/>
-      <stop offset="0.42" stop-color="#efd58f"/>
-      <stop offset="0.72" stop-color="#caa552"/>
-      <stop offset="1" stop-color="#7f6226"/>
+    <linearGradient id="leftGold" x1="0.2" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#fff7cf"/>
+      <stop offset="0.48" stop-color="#efd58e"/>
+      <stop offset="0.78" stop-color="#c6a04d"/>
+      <stop offset="1" stop-color="#8d6928"/>
     </linearGradient>
-    <linearGradient id="gold-soft" x1="0" y1="0" x2="0.8" y2="1">
-      <stop offset="0" stop-color="#fff8dc"/>
-      <stop offset="0.5" stop-color="#e9cc7f"/>
-      <stop offset="1" stop-color="#9a7630"/>
+    <linearGradient id="rightGold" x1="0.15" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#fff8d7"/>
+      <stop offset="0.45" stop-color="#efd28a"/>
+      <stop offset="0.74" stop-color="#bd9441"/>
+      <stop offset="1" stop-color="#75531d"/>
     </linearGradient>
-    <radialGradient id="orb" cx="35%" cy="30%" r="75%">
-      <stop offset="0" stop-color="#fff9dd"/>
-      <stop offset="0.48" stop-color="#ecd28e"/>
-      <stop offset="1" stop-color="#987532"/>
+    <linearGradient id="innerGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e7c977"/>
+      <stop offset="1" stop-color="#6f4e1a"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="34%" cy="28%" r="72%">
+      <stop offset="0" stop-color="#fffbe2"/>
+      <stop offset="0.48" stop-color="#efd58e"/>
+      <stop offset="1" stop-color="#9c7630"/>
     </radialGradient>
-    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".28"/>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".28"/>
     </filter>
   </defs>
-  <g filter="url(#shadow)">
-    <path d="M375 348c-22 94-8 177 43 244 43 57 101 93 173 113 47 13 96 17 146 10-74 34-150 45-226 31-92-17-167-67-218-145-45-70-57-148-35-233 16-59 48-109 96-151-18 45-11 87 21 131z" fill="url(#gold-soft)"/>
-    <path d="M494 579c84-64 151-145 202-244 38-73 86-134 145-184-38 69-67 143-89 221-27 96-62 180-105 252-22 38-49 66-81 85-33 19-66 19-100 0-21-12-38-28-51-49 31 4 57-3 79-21z" fill="url(#gold-main)"/>
-    <path d="M492 579c42 32 83 51 123 56 42 5 80-1 114-20-26 33-59 54-98 64-42 10-84 3-126-22-20-12-38-28-53-48 13-8 26-18 40-30z" fill="#6f531f" opacity=".55"/>
-    <circle cx="518" cy="432" r="31" fill="url(#orb)"/>
+  <g filter="url(#softShadow)">
+    <path d="M393 347c-18 37-29 75-28 112 1 62 28 113 72 151 27 24 58 41 91 50 25 7 45 1 61-16 11-11 20-26 28-43-21 14-43 19-66 15-31-5-66-23-103-53-45-37-72-82-79-132-5-31 3-59 24-84z" fill="url(#leftGold)"/>
+    <path d="M493 551c46-31 83-74 113-128 31-55 59-104 88-147-20 38-37 78-51 121-18 56-41 106-69 151-18 28-34 43-50 46-13 2-25-2-38-11-7-5-14-11-20-18 10-3 19-8 27-14z" fill="url(#rightGold)"/>
+    <path d="M493 551c24 18 47 27 69 26 18-1 35-7 51-19-12 19-27 33-44 41-20 9-40 8-60-3-13-7-24-18-34-31 6-3 12-8 18-14z" fill="url(#innerGold)" opacity=".9"/>
+    <circle cx="512" cy="434" r="31" fill="url(#orb)"/>
   </g>
 </svg>
