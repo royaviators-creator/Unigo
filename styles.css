@@ -15,8 +15,8 @@
 
 /* Keep the homepage join form compact and visually balanced with its text column. */
 .home-page .premium-signup {
-  grid-template-columns: minmax(0, 1.08fr) minmax(420px, .82fr);
-  gap: clamp(44px, 6vw, 88px);
+  grid-template-columns: minmax(0, 1.12fr) minmax(360px, .72fr);
+  gap: clamp(48px, 7vw, 104px);
   align-items: center;
 }
 
@@ -26,56 +26,56 @@
 
 .home-page .premium-signup .lead-form {
   width: 100%;
-  max-width: 520px;
+  max-width: 440px;
   justify-self: end;
-  padding: 22px;
-  gap: 14px;
-  border-radius: 22px;
+  padding: 18px;
+  gap: 11px;
+  border-radius: 20px;
 }
 
 .home-page .premium-signup .form-intro {
   align-items: center;
-  gap: 14px;
+  gap: 10px;
 }
 
 .home-page .premium-signup .form-intro p {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .home-page .premium-signup .beta-form {
-  gap: 14px;
+  gap: 11px;
 }
 
 .home-page .premium-signup .form-grid {
-  gap: 12px;
+  gap: 10px;
 }
 
 .home-page .premium-signup .beta-form label {
-  gap: 6px;
-  font-size: 14px;
+  gap: 5px;
+  font-size: 13px;
 }
 
 .home-page .premium-signup .beta-form input,
 .home-page .premium-signup .beta-form select,
 .home-page .premium-signup .beta-form textarea {
-  padding: 12px 13px;
-  border-radius: 12px;
+  padding: 10px 12px;
+  border-radius: 11px;
 }
 
 .home-page .premium-signup .beta-form textarea {
-  min-height: 96px;
-  max-height: 150px;
+  min-height: 78px;
+  max-height: 120px;
 }
 
 .home-page .premium-signup .consent-row {
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .home-page .premium-signup .btn {
-  padding-block: 13px;
+  padding-block: 11px;
 }
 
 @media (max-width: 900px) {
@@ -85,7 +85,7 @@
   }
 
   .home-page .premium-signup .lead-form {
-    max-width: 620px;
+    max-width: 560px;
     justify-self: stretch;
   }
 }
@@ -98,6 +98,7 @@
   }
 
   .home-page .premium-signup .lead-form {
-    padding: 20px;
+    max-width: none;
+    padding: 18px;
   }
 }
