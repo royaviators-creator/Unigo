@@ -10,7 +10,7 @@
   width: 40px;
   height: 40px;
   flex: 0 0 40px;
-  background: url('favicon.svg?v=20260720-3') center / contain no-repeat;
+  background: url('exact-logo.svg?v=20260720-4') center / contain no-repeat;
 }
 
 @media (max-width: 700px) {
