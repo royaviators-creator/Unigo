@@ -25,7 +25,7 @@ const applyForm=document.querySelector('body:not(.home-page) [data-beta-form]');
 if(applyForm&&!document.querySelector('.partner-reward-card')){
   const card=document.createElement('aside');
   card.className='partner-reward-card';
-  card.innerHTML='<span class="reward-badge">Founding Partner</span><strong>Join during Early Access</strong><p>Receive priority profile review, a founding badge and featured early visibility.</p>';
+  card.innerHTML='<span class="reward-badge">Partner Application</span><strong>Apply to join UNIGO</strong><p>Share your business profile for review and make your impact visible to travelers.</p>';
   applyForm.insertAdjacentElement('beforebegin',card);
 }
 
